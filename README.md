@@ -4,7 +4,7 @@ SimpleTokenChecker is a simple and easy to use discord token checker ✨
 
 
 Features:
-✅ Checks each token if it is valid!
+✅ Checks each token if it is valid!\n
 ✅ Checks if the token is unverified, ev or fv!
 ✅ Saves tokens in different files!
 
