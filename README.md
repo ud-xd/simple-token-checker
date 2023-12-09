@@ -9,6 +9,7 @@ Features:
 3) ✅ Checks if the token has a payment method attached!
 4) ✅ Saves tokens in different files!
 
+
 Planned:
 1) 🎫 Badges Check
 2) 👑 Serverowner Check
