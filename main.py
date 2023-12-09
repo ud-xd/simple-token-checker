@@ -2,23 +2,6 @@ import requests
 import colorama
 import os
 
-
-def checkev():
-    global l
-    email = l.json()["email"]
-    if email == None:
-        return False
-    else:
-        return True
-
-def checkfv():
-    global l
-    phone = l.json()["phone"]
-    if phone == None:
-        return False
-    else:
-        return True
-
     
 
 
@@ -30,6 +13,7 @@ def main():
 
     validcounter = 0
     invalidcounter = 0
+    billingcounter = 0
 
     for token in tokens:
         try:
@@ -61,6 +45,17 @@ def main():
                         fvfile.write(token + "\n")
                         print(f"[{colorama.Fore.GREEN}FV{colorama.Fore.RESET}] - {colorama.Fore.GREEN}{token}{colorama.Fore.RESET}")
                         # Token is fully verified!
+
+                nitro_type = l.json()["premium_type"]
+                if nitro_type == 0:
+                    pass 
+                    # No nitro (imagine lol, kinda cringe)
+                else:
+                    print(f"[{colorama.Fore.MAGENTA}BILLING HIT{colorama.Fore.RESET}] - {colorama.Fore.MAGENTA}{token}{colorama.Fore.RESET}")
+                    billingcounter += 1
+                    # Token has either nitro boost or basic
+                
+
             
             else:
                 print(f"[{colorama.Fore.RED}DEAD{colorama.Fore.RESET}] - {colorama.Fore.RED}{token}{colorama.Fore.RESET}")
@@ -70,11 +65,8 @@ def main():
             print("Failed to connect! ")
             print(e)
 
-
-        
-
     
-    print(f"{colorama.Fore.BLUE}Checking process done. Valid:{colorama.Fore.LIGHTBLUE_EX}", validcounter, f", {colorama.Fore.BLUE}Invalid:{colorama.Fore.LIGHTBLUE_EX}", invalidcounter, f"!{colorama.Fore.RESET}")
+    print(f"{colorama.Fore.BLUE}Checking process done. Valid:", validcounter, ", Invalid:", invalidcounter, ", Tokens with billing:", billingcounter, f"{colorama.Fore.RESET}")
 
 
 os.system("cls")
